@@ -15,7 +15,6 @@ def add_habit():
   if request.method == "POST":
     habit = request.form.get("habit")
     habits.append(habit)
-    return redirect(url_for(request.url))
     
   return render_template("add_habit.html",title="Add Habit")
 
