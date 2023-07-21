@@ -9,7 +9,14 @@
   <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 </head>
 <body>
-  <header class="header"></header>
+  <header class="header">
+    <h1 class="header__logo">
+      <a href="{{ url_for('index') }}" class="header__link">Habits</a>
+    {% if "add" not in request.endpoint %}
+      <a href="{{ url_for('add_habit') }}" class="header__link">+ Add new</a>
+    {% endif %}
+    </h1>
+  </header>
 
   <main class="main">
     {% block main_content %}
