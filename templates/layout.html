@@ -26,7 +26,7 @@
     <section class="dates">
       {% for date in date_range(selected_date) %}
       <a href="{{ url_for('index', date=date) }}"
-        class="dates__link {{ 'dates__link--current' if loop.index == 3 else ''}}">
+        class="dates__link {{ 'dates__link--current' if loop.index == 4 else ''}}">
         <time class="date" datetime="{{ date }}">
           <span>{{ date.strftime("%a") }}</span>
           <span>{{ date.strftime("%d") }}</span>
