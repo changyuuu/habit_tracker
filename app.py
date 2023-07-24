@@ -1,9 +1,11 @@
 from flask import Flask, render_template, redirect, url_for, request
+from collections import defaultdict
 import datetime
 
 app = Flask(__name__)
 
 habits = ["Test habit"]
+completions = defaultdict(list)
 
 @app.context_processor
 def add_calc_date_range():
@@ -22,7 +24,11 @@ def index():
   else:
     selected_date = datetime.date.today()
 
-  return render_template("index.html", habits=habits,selected_date=selected_date, title="Home")
+  return render_template("index.html", 
+    habits=habits,
+    selected_date=selected_date,
+    title="Home",
+    completions=completions[selected_date])
 
 @app.route("/add", methods=["GET","POST"])
 def add_habit():
@@ -30,8 +36,19 @@ def add_habit():
   if request.method == "POST":
     habits.append(request.form.get("habit"))
     
-  return render_template("add_habit.html",selected_date=datetime.date.today(), title="Add Habit")
+  return render_template("add_habit.html",
+  selected_date=datetime.date.today(),
+  title="Add Habit")
 
+@app.route("/complete", methods=["POST"])
+def complete():
+  date_string = request.form.get("date")
+  date = datetime.date.fromisoformat(date_string)
+  habit = request.form.get('habitName')
+  completions[date].append(habit)
+  
+  return redirect(url_for("index", date=date_string,habits=habit))
 
 if __name__ == "__main__":
-  app.run(debug=True)
+  debug = True
+  app.run()
