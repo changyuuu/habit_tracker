@@ -28,7 +28,7 @@ body {
 .header__link {
   text-decoration: none;
   color: inherit;
-  transition: color 1s ease-in-out;
+  transition: color 0.1s ease-in-out;
 }
 
 .header__link:hover {
@@ -72,7 +72,7 @@ body {
   justify-content: space-around;
   color: #000;
   font-size: 1.1rem;
-  margin-bottom: 2.5 rem;
+  margin-bottom: 8px;
 }
 
 .dates__link {
