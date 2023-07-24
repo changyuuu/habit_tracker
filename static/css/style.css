@@ -118,3 +118,46 @@ body {
   display: block;
 }  
 }
+
+.habit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 26px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff2d8;
+  border: 3px solid black;
+  border-radius: 6px;
+}
+
+.habit:not(.completed):hover {
+  background-color: #e9cd87;
+}
+
+.habit__icon {
+  width: 1em;
+  height: 1em;
+}
+
+.habit__name {
+  margin: 0;
+}
+
+.habit__form {
+  width: 100%;
+}
+
+.habit__btn {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: left;
+  border: none;
+  background-color: unset;
+  cursor: pointer;
+}
